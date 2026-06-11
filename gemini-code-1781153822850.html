@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Cup Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="auth-container" class="card">
+        <h2>Welcome to the Cup Marketplace</h2>
+        <div class="tabs">
+            <button id="tab-login" class="active" onclick="switchAuthMode('login')">Login</button>
+            <button id="tab-register" onclick="switchAuthMode('register')">Register</button>
+        </div>
+        
+        <form id="auth-form" onsubmit="handleAuth(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <label for="identity">Choose Identity:</label>
+            <select id="identity">
+                <option value="customer">Customer</option>
+                <option value="retailer">Retailer</option>
+                <option value="administrator">Administrator</option>
+            </select>
+
+            <button type="submit" id="auth-btn">Log In</button>
+        </form>
+    </div>
+
+    <div id="dashboard" class="hidden">
+        <header>
+            <span id="user-greeting"></span>
+            <button onclick="logout()">Logout</button>
+        </header>
+
+        <section id="customer-view" class="view-section hidden">
+            <h2>Shop International Cups</h2>
+            <div id="cup-list" class="grid"></div>
+        </section>
+
+        <section id="retailer-view" class="view-section hidden">
+            <h2>Retailer Panel</h2>
+            <h3>Shelf a New Cup</h3>
+            <form id="retailer-form" onsubmit="addCup(event)">
+                <input type="text" id="cup-name" placeholder="Cup Name" required>
+                <input type="text" id="cup-origin" placeholder="Country of Origin" required>
+                <input type="text" id="cup-img" placeholder="Image URL" required>
+                <button type="submit">Add to Shelf</button>
+            </form>
+        </section>
+
+        <section id="administrator-view" class="view-section hidden">
+            <h2>Admin Panel</h2>
+            <p>Modify backend rankings/settings (Simulation)</p>
+            <button onclick="alert('Rankings updated successfully!')">Re-rank Top Items</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
